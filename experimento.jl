@@ -33,7 +33,7 @@ x = zeros(10)
 
 #inicializar matriz
 #tres filas cuatro columnas
-x = zeros [3,4]
+x = zeros[3,4]
 
 #puedo decirle que tipo de número uso
 #le digo que cree vector vacia
@@ -228,4 +228,8 @@ plot!(p3)
 
 #el tiempo a un evento con una tasa determinada
 
+###
 
+
+##Fin clase 1
+###############
