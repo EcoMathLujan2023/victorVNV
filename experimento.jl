@@ -149,7 +149,8 @@ for i in 1:100
 end
 
 count(eventos)
-
+###############################################
+##ACTIVIDAD CAMINANTE ALEATORIO
 #Hacer funcion caminante aleatorios
 #Una funcion que diga si da un paso hacia adelante o hacia atras
 
@@ -161,4 +162,4 @@ function caminante_aleatoro(p)
     end
 end
 
-ccaminante_aleatorio(0.6)aminante_aleatoro(0.15)
+caminante_aleatorio(0.125)
