@@ -154,7 +154,7 @@ count(eventos)
 #Hacer funcion caminante aleatorios
 #Una funcion que diga si da un paso hacia adelante o hacia atras
 
-function caminante_aleatoro(p)
+function caminante_aleatorio(p)
     if rand() < p
         return @info "Paso atrás"
     else
@@ -163,3 +163,69 @@ function caminante_aleatoro(p)
 end
 
 caminante_aleatorio(0.125)
+
+####
+### Utilizamos evento_aleatorio, una función anterior !
+function caminante_aleatorio(p,pasos)
+    ev=Int8[]
+        for i in 1:pasos
+            if (evento_aleatorio(p))
+                push!(ev, 1)
+            else 
+                push!(ev, -1)
+            end
+        end
+    return ev 
+end
+eventos = caminante_aleatorio(0.5,100)
+
+using Plots
+plot(eventos)
+
+scatter!(eventos)
+
+########
+## Función que calcule el crecimiento exponencial !
+#usar barra \ lambda para hacer λ con tabulador
+# en tiempo discreto
+
+#N(t+h)= N(t)+lambda*N(t)
+
+#deirle cuando terminar
+
+function crec_exp(λ, N₀ ,tfinal)
+    pop = [N₀] #pushear ! 
+    for  t in 1: tfinal -1#guardar todos los resultados
+        #menos 1 es un detalle para que de exacto 100 iteraciones
+        pop1=pop[t]+λ*pop[t] #según la fórmula de crecimiento exponencial
+        push!(pop,pop1)
+
+    end
+    return pop
+   #con return "sale afuera"
+end
+
+p1=crec_exp(0.1 , 1.0 , 100)    
+
+plot(p1)
+
+p2=crec_exp(0.15 , 1.0 , 100)    
+#para anidar uso !
+plot!(p2)
+
+
+p3=crec_exp(0.15 , 1.0 , 1000)    
+plot!(p3)
+
+
+
+#Hacerlo estocástico
+#es decir aveces va a crecer y otras no
+
+#tiempo que va a tardar en darse en un nacimiento
+
+#ese tiempo tiene una distribución exponencial
+
+#el tiempo a un evento con una tasa determinada
+
+
