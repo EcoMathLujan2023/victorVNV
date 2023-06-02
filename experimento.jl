@@ -119,3 +119,46 @@ for i in 1:10
         @info "False"
     end
 end
+
+
+#encapsular serie de comandos
+
+#funciones
+
+function evento_aleatorio(p)
+    if rand() < p
+        return true
+    else
+        return false
+    end
+end
+
+evento_aleatorio(0.1)
+
+#eventos = true
+evento = Bool[]
+typeof(evento)
+
+push!(evento, false)
+
+length(evento)
+
+eventos = Bool[]
+for i in 1:100
+    push!(eventos,evento_aleatorio(0.1))
+end
+
+count(eventos)
+
+#Hacer funcion caminante aleatorios
+#Una funcion que diga si da un paso hacia adelante o hacia atras
+
+function caminante_aleatoro(p)
+    if rand() < p
+        return @info "Paso atrás"
+    else
+        return @info "Paso adelante"
+    end
+end
+
+ccaminante_aleatorio(0.6)aminante_aleatoro(0.15)
