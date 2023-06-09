@@ -74,31 +74,36 @@ plot!(c5)
 #hacer repiques, por ejemplo en poblacion de bacterias
 #
 
-function crec_exp_repique(λ, N₀ ,tfinal,h=1.0, trepique)
-    pop = [N₀] #pushear ! 
+#if t % trepique <=0.0
+                #@info 
+ #               pop1 = 0.1* pop1
+  #          end
+
+
+#Argumento con opciones con defecto 
+#deben escribirse al final, sino dan error en la función
+
+
+function crec_exp_rep(λ, N₀ ,tfinal,trepique,h=1)
+    pop = [N₀] 
     ts= [0.0]
-    #Para evaluar los tiempos sin iterar sobre este
-   #inice que indica que elemento de la vector se guara la poblacion
     i=1
     t=0.0
-    while t<= tfinal #for  t in 1: tfinal -1#guardar todos los resultados
-        #el for trabaja con iteración no con continuo
-        #menos 1 es un detalle para que de exacto 100 iteraciones
-        pop1=pop[i]+λ*h*pop[i] #según la fórmula de crecimiento exponencial
-        #equivalente a aproximar a una ecuación continua
+    while t<= tfinal 
+        pop1=pop[i]+λ*h*pop[i] 
         t=ts[i]+h
+        i+= 1
             if t % trepique <=0.0
                 #@info 
                 pop1 = 0.1* pop1
             end
-            
-        #es necesario que se incremente el indice
-        #sino evalua la funcion al infinito con el indice cero
-        i += 1
         push!(pop,pop1)
         push!(ts,t)    
 
     end
     return ts, pop
-   #con return "sale afuera"
+   
 end
+
+cr1 = crec_exp_rep(0.1,1.0,100.0,0.5,25.0)
+plot(cr1)

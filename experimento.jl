@@ -8,6 +8,8 @@
 
 #ejemplo 'add Plot'
 
+#using Plots, me autoriza a utilizar el paquete
+
 #variables. Tipos de variables
 
 x = 10 #variable tipo número entero
@@ -143,12 +145,13 @@ push!(evento, false)
 
 length(evento)
 
+#Realizando un vector de V o F, y sumando al vector vacío
 eventos = Bool[]
 for i in 1:100
     push!(eventos,evento_aleatorio(0.1))
 end
 
-count(eventos)
+#count(eventos)
 ###############################################
 ##ACTIVIDAD CAMINANTE ALEATORIO
 #Hacer funcion caminante aleatorios
