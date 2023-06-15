@@ -107,3 +107,62 @@ end
 
 cr1 = crec_exp_rep(0.1,1.0,100.0,0.5,25.0)
 plot(cr1)
+
+
+#simular evento estocastico
+#utilizando distribucion exponencial
+#tiempo que transcurre hasta que pasa un evento
+#tasa percapita lambada
+#tasa total nro individuos por lamba
+
+# tiempo que tarda un evento, por ejemplo reproduccion
+
+#a partir e numeros al azar -log de rand / tasa  == distribucon exponencial
+#solo para ver la forma de la distribucion
+
+n = 10000
+de=zeros(n)
+λ=0.1
+
+for i in 1:n
+    de[i] = -log(rand())/λ
+end
+
+function dist_exp(λ)
+    n = 10000
+    de=zeros(n)
+    
+
+    for i in 1:n
+    de[i] = -log(rand())/λ
+    end
+    return de
+end
+
+
+
+function crec_exp_sto(λ, N₀ ,tfinal)
+    pop = [N₀] 
+    ts= [0.0]
+    i=1
+    t=0.0               #variable auxiliar
+
+    while t<= tfinal 
+        B= pop[i]*λ  #tasa total de la poblacion
+        t = ts[i] - log(rand())/B #tiempo a un evento a tasa B
+        #proximo tiempo. Aqui sucede un solo evento, la poblacion aumenta en 1
+        pop1=pop[i]+ 1 
+        #poblacion mas grande, tiempo entre eventos es menor
+        i+= 1
+            
+        push!(pop,pop1)
+        push!(ts,t)    
+
+    end
+    return pop, ts
+   
+end
+
+ces1 = crec_exp_sto(0.1,1.0,1000)
+
+plot(ces1)
