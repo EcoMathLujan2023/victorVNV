@@ -53,7 +53,13 @@ plot(cr5)
 
 #tasa crecimiento alta, numero e iteraciones mayor
 
-cr6 = crec_exp_rep(0.91,5500.0,5550.0,0.50,0.00125)
+cr6 = crec_exp_rep(0.005,1.0,500.0,50,0.75)
 plot(cr6)
 
+
+cr7 = crec_exp_rep(0.0075,1.0,500.0,50,0.75)
+plot(cr7)
+
+#conclusiones, tasaas de cecimientos bajas llevan a la extinción
+# pasos de tiempos muy pequeños saturan el gráfico se van a x10^al la chingada
 
