@@ -15,8 +15,9 @@ using Plots
 # c = Tasa de asimilación c < b
 # d = Mortalidad de la poblacion
 
-function logistico_det(par,N₀,P₀, tfinal, h=1.0)    # asume intervalo de tiempo = h
-    a, b, c, d, e = par                       # desempaquetamos los parámetros
+function logistico_det(par,pob, tfinal, h=1.0)    # asume intervalo de tiempo = h
+    a, b, c, d, e = par  
+    N₀,P₀ = pob       # desempaquetamos los parámetros
     popP = Float64[N₀]
     popN = Float64[N₀]                        # Forzamos variable a Float64 (numero real)
     ts  = [0.0]
@@ -38,5 +39,7 @@ function logistico_det(par,N₀,P₀, tfinal, h=1.0)    # asume intervalo de tie
     return ts,popN, popP
 end
 
-pr=logistico_det([20.0,0.8,0.3,5.0,0.5],100,80, 1000, 0.01)
-plot(pr)
+t, N, P=logistico_det([0.2,0.8,0.3,0.02,0.5],[100,80], 1000, 0.001)
+plot(N,P)
+plot(t,N)
+plot!(t,P)
