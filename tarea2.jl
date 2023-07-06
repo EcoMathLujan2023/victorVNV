@@ -1,16 +1,16 @@
 using Plots
-
-#crecimiento estocástico con repique cada 50 (elimina 90%)
-#código igual, reciclar entonces.
-#bucle while para modelo continuo en general
-#lambda tasa crecimiento
-#N₀ población inicial, en general 1
-# tfinal: tiempo en el cual termina la simulación
-#trepique: tasa repique, donde se elimina la población
-#h fracción de tiempo, si es 1 entonces es modelo discreto, si los pasos en el tiempo son fracciones, entonces es continuo
-#pop vector con el número de la población en cada vuelta del ciclo
-# i es el paso, e iterador, siempre decir que luego del ciclo se suma un paso
-
+"""
+    crecimiento estocástico con repique cada 50 (elimina 90%)
+    código igual, reciclar entonces.
+    bucle while para modelo continuo en general
+    lambda tasa crecimiento
+    N₀ población inicial, en general 1
+    tfinal: tiempo en el cual termina la simulación
+    trepique: tasa repique, donde se elimina la población
+    h fracción de tiempo, si es 1 entonces es modelo discreto, si los pasos en el tiempo son fracciones, entonces es continuo
+    pop vector con el número de la población en cada vuelta del ciclo
+    i es el paso, e iterador, siempre decir que luego del ciclo se suma un paso
+"""
 function crec_exp_rep(λ, N₀ ,tfinal,trepique,h)
     pop = [N₀] 
     ts= [0.0]
