@@ -151,13 +151,40 @@ function lotka_volterra!(du, u, p, t)
 end
 
 # Condiciones iniciales
-u0 = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+# gr/m²: H, microflora, MICROFAUNA_d, MICROFAUNA_p, MESOFAUNA_d, MESOFAUNA_p, MACRO_d, MACRO_p
+
+u0 = [200, 130, 105, 85, 60, 50, 70, 40]
 
 # Coeficientes y parámetros
-p = [a, d, b, c, g, j, mmp, mmep, mmacp, e, f, i, k, q, l1, l2, l3, n1, n2, n3, ea, edm, eam1, eam2]
+
+#a = ingreso hojarasca; d = desaparición fisica quimica natural de la hojarasca
+#b = crecimiento microflora; c = crecimiento MICROFAUNA_d ;g = crecimiento MESOFAUNA_d;j = crecimiento MACRO_d
+
+#mmp = muerte microfauna predadora; mmep = muerte mesofauna predadora; mmacp = muerte de la macrofauna predadora
+
+#e = eficiencia descomposición de hojarasca por parte de la microflora; f = eficiencia de asimilación de la microflora que se alimenta de hojarasca
+
+#i = eficiencia de asimilación de la MICROFAUNA_d que come Microflora;k = eficiencia asimilacion MICROFAUNA_p que come MICROFAUNA_d
+#q = eficiencia asimilacion MESOFAUNA_d que come Microflora
+
+#l1 = eficiencia asimilacion MESOFAUNA_p que come micro detritivora; l2 = eficiencia asimilacion MESOFAUNA_p que come micro predadora
+#l3 = eficiencia asimilacion MESOFAUNA_p que come meso detritivora
+
+#n1 = eficiencia de asimilación de la MACRO_p que come MESOFAUNA_d ;n2 = eficiencia de asimilación de la MACRO_p que come MESOFAUNA_p
+#n3 = eficiencia de asimilación de la MACRO_p que come MACRO_d
+
+
+#ea = eficiencia asimilacion microflora
+#edm = eficiencia descomposición de hojarasca por parte de la macrofauna
+#eam1 = eficiencia asimilacion de la MACRO_d que come hojarasca
+#eam2 = eficiencia asimilacion de la MACRO_d que come microflora
+
+
+#p = [a, d, b, c, g, j, mmp, mmep, mmacp, e, f, i, k, q, l1, l2, l3, n1, n2, n3, ea, edm, eam1, eam2]
+p = [50, 10, 50, 30, 12, 4, 40, 25, 6, 0.5, 0.7, 0.65, 0.8, 0.6, 0.8, 0.75, 0.67, 0.7, 0.67, 0.6, 0.8, 0.4, 0.6, 0.7]
 
 # Rango de tiempo
-tspan = (0.0, 10.0)
+tspan = (0.0, 50.0)
 
 # Resolver las ecuaciones diferenciales
 prob = ODEProblem(lotka_volterra!, u0, tspan, p)
@@ -165,3 +192,7 @@ sol = solve(prob, Tsit5(), saveat=0.1)
 
 # Graficar los resultados
 plot(sol, title="Dinámica de la Red de Interacciones", xlabel="Tiempo", ylabel="Población", label=["H" "microflora" "MICROFAUNA_d" "MICROFAUNA_p" "MESOFAUNA_d" "MESOFAUNA_p" "MACRO_d" "MACRO_p"])
+
+
+#La gráfica muestra los crecimientos poblacionales de forma determinística
+
