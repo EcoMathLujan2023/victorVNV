@@ -477,10 +477,14 @@ p = [50, 10, 50, 30, 12, 4, 40, 25, 6, 0.5, 0.7, 0.65, 0.8, 0.6, 0.8, 0.75, 0.67
 
 tfinal=5
 t,H,mi,mfD,mfP,msD,msP,maD,maP = lotka_stoc(p,u0,tfinal)
-plot(t,H, label="N")
-plot!(t,P, label="P")
-
-
+plot(t,H, label="Hojarasca")
+plot!(t,mi, label="Microflora")
+plot!(t,mfD, label="Microfauna detritivora")
+plot!(t,mfP, label="Microfauana Predadora")
+plot!(t,msD, label="Mesofauan Detritívora")
+plot!(t,msP, label="Mesofauna Predadora")
+plot!(t,maD, label="Macrofauna Detritívora")
+plot!(t,maP, label="Macrofauna predadora")
 
 """La Aproximación Bayesiana por Rechazo es un algoritmo de muestreo utilizado para inferir parámetros en modelos relacionados con la ecología de sistemas complejos. Este algoritmo se basa en la teoría bayesiana y utiliza la probabilidad de los datos observados para estimar los parámetros desconocidos. En la Aproximación Bayesiana por Rechazo , se generan muestras aleatorias de los parámetros del modelo utilizando una distribución de probabilidad inicial. Luego, se evalúa la verosimilitud de los datos observados dadas las muestras generadas y se compara con un umbral de aceptación. Si la verosimilitud está por encima del umbral, la muestra se acepta como una aproximación del valor verdadero del parámetro. Si la verosimilitud está por debajo del umbral, la muestra se descarta y se genera una nueva muestra.
 
